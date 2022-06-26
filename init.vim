@@ -8,12 +8,17 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'hashivim/vim-terraform'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'overcache/NeoSolarized'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kshenoy/vim-signature'
+
+" Colorscheme
+Plug 'overcache/NeoSolarized'
+Plug 'arcticicestudio/nord-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Initialize plugin system
 " on_attach=require'completion'.on_attach,
@@ -97,7 +102,11 @@ EOF
 
 " Set color
 set termguicolors
-colorscheme NeoSolarized
+"colorscheme NeoSolarized
+colorscheme dracula
+"colorscheme OceanicNext
+"colorscheme nord
+
 set dictionary+=/usr/share/dict/words
 
 " set the leader command
@@ -114,7 +123,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
-
 " Tabs
 set list
 set listchars=tab:⨠\ ,trail:∙
@@ -124,6 +132,10 @@ set shiftwidth=4
 set softtabstop=4
 set scrolloff=8
 set sidescrolloff=8
+
+"Highlight the current line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " Set hybrid line numbers
 set number relativenumber
@@ -147,9 +159,8 @@ nmap <leader>ga :G commit --amend --no-edit<CR>
 " Show the modifications I made to a file
 nmap <leader>gd :G diff<CR>
 nmap <leader>gp :G push origin $GIT_BRANCH<CR>
-" Show commit history of a file 
+" Show commit history of a file
 nmap <leader>gb :G blame<CR>
 " Show log in pretty format
 nmap <leader>gl :G log --pretty=oneline<CR>
 nmap <leader>gpf :G push origin $GIT_BRANCH -f<CR>
-
