@@ -123,6 +123,19 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
+" Format JSON
+nnoremap <leader>j <cmd>%!jq -r<cr>
+vnoremap <leader>j <cmd>%!jq -r<cr>
+" Format JSON Compact
+nnoremap <leader>jj <cmd>%!jq -c<cr>
+vnoremap <leader>jj <cmd>%!jq -c<cr>
+" Base64 Decode
+" https://stackoverflow.com/questions/7845671/how-to-execute-base64-decode-on-selected-text-in-vim
+"vnoremap <leader>d y:let @"=system('base64 --decode', @")<cr>gvP
+vnoremap <leader>d y:let @"=substitute(system('base64 --decode', @"), "\n\\+$", "", "")<cr>gvP
+" Base64 Encode
+vnoremap <leader>e y:let @"=substitute(system('base64 -b 0', @"), "\n\\+$", "", "")<cr>gvP
+
 " Tabs
 set list
 set listchars=tab:⨠\ ,trail:∙
